@@ -1,13 +1,14 @@
---
+---
 - hosts: pfsense
   become: true
-  
+  become_user: root
+
   vars:
     - vmip: 10.10.10.10
 
   collections:
     - pfsensible.core
-    
+
   tasks:
 
     - name: "Install needed package on pfSense"
@@ -22,7 +23,7 @@
         interface: wan
         source: any
         destination: any:27015
-        target: {{ vmip }}:27015
+        target: '{{ vmip }}:27015'
         associated_rule: pass
         state: present
 
@@ -32,7 +33,7 @@
         interface: wan
         source: any
         destination: any:27016
-        target: {{ vmip }}:27016
+        target: '{{ vmip }}:27016'
         associated_rule: pass
         state: present
 
@@ -42,16 +43,56 @@
         interface: wan
         source: any
         destination: any:27017
-        target: {{ vmip }}:27017
+        target: '{{ vmip }}:27017'
         associated_rule: pass
         state: present
-        
+
     - name: "Add NAT port forward traffic rule for CSGO_4"
       pfsense_nat_port_forward:
         descr: 'csgo4'
         interface: wan
         source: any
         destination: any:27018
-        target: {{ vmip }}:27018
+        target: '{{ vmip }}:27018'
+        associated_rule: pass
+        state: present
+
+    - name: "Add NAT port forward traffic rule for CSGO_1"
+      pfsense_nat_port_forward:
+        descr: 'csgo1_tv'
+        interface: wan
+        source: any
+        destination: any:27020
+        target: '{{ vmip }}:27020'
+        associated_rule: pass
+        state: present
+
+    - name: "Add NAT port forward traffic rule for CSGO_2"
+      pfsense_nat_port_forward:
+        descr: 'csgo2_tv'
+        interface: wan
+        source: any
+        destination: any:27021      
+        target: '{{ vmip }}:27021'
+        associated_rule: pass
+        state: present
+
+    - name: "Add NAT port forward traffic rule for CSGO_3"
+      pfsense_nat_port_forward:
+        descr: 'csgo3_tv'
+        interface: wan
+        source: any
+        destination: any:27022      
+        target: '{{ vmip }}:27022'
+        associated_rule: pass
+        state: present
+
+    - name: "Add NAT port forward traffic rule for CSGO_4"
+      pfsense_nat_port_forward:
+        descr: 'csgo4_tv'
+        interface: wan
+        source: any
+        destination: any:27023      
+        target: '{{ vmip }}:27023'
         associated_rule: pass
         state: present
