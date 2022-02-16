@@ -1,0 +1,73 @@
+version: '3.4'
+
+services:
+
+  csgo:
+    image: cm2network/csgo
+    container_name: csgo1
+    restart: always
+    network_mode: host
+    environment:
+      SRCDS_STARTMAP: ${MAP_CSGO1}
+      SRCDS_NET_PUBLIC_ADDRESS: ${PUBLIC_IP}
+      SRCDS_TOKEN: ${TOKEN1}
+      SRCDS_TICKRATE: ${TICKRATE}
+      SRCDS_GAMETYPE: 0
+      SRCDS_GAMEMODE: 0
+      SRCDS_MAPGROUP: mg_hostage
+    volumes:
+      - /data/csgo1:/home/steam/csgo-dedicated
+
+  csgo2:
+    image: cm2network/csgo
+    container_name: csgo2
+    restart: always
+    network_mode: host
+    environment:
+      SRCDS_STARTMAP: ${MAP_CSGO2}
+      SRCDS_NET_PUBLIC_ADDRESS: ${PUBLIC_IP}
+      SRCDS_TOKEN: ${TOKEN2}
+      SRCDS_PORT: 27016 
+      SRCDS_TV_PORT: 27021
+      SRCDS_TICKRATE: ${TICKRATE}
+      SRCDS_GAMETYPE: 1
+      SRCDS_GAMEMODE: 0
+      SRCDS_MAPGROUP: mg_armsrace
+    volumes:
+      - /data/csgo2:/home/steam/csgo-dedicated
+
+  csgo3:
+    image: cm2network/csgo
+    container_name: csgo3
+    restart: always
+    network_mode: host
+    environment:
+      SRCDS_STARTMAP: ${MAP_SCGO3}
+      SRCDS_NET_PUBLIC_ADDRESS: ${PUBLIC_IP}
+      SRCDS_TOKEN: ${TOKEN3}
+      SRCDS_PORT: 27017
+      SRCDS_TV_PORT: 27022
+      SRCDS_TICKRATE: ${TICKRATE}
+      SRCDS_GAMETYPE: 0
+      SRCDS_GAMEMODE: 2
+      SRCDS_MAPGROUP: mg_wingman
+    volumes:
+      - /data/csgo3:/home/steam/csgo-dedicated
+
+  csgo4:
+    image: cm2network/csgo
+    container_name: csgo4
+    restart: always
+    network_mode: host
+    environment:
+      SRCDS_STARTMAP: ${MAP_CSGO4}
+      SRCDS_NET_PUBLIC_ADDRESS: ${PUBLIC_IP}
+      SRCDS_TOKEN: {TOKEN4}
+      SRCDS_PORT: 27018
+      SRCDS_TV_PORT: 27023
+      SRCDS_TICKRATE: ${TICKRATE}
+      SRCDS_GAMETYPE: 4
+      SRCDS_GAMEMODE: 0
+      SRCDS_MAPGROUP: mg_wingman
+    volumes:
+      - /data/csgo4:/home/steam/csgo-dedicated
