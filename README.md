@@ -31,6 +31,11 @@ qm set 9000 --boot c --bootdisk scsi0
 qm set 9000 --serial0 socket --vga serial0
 qm template 9000
 ```
+Next go to your template, cloud-init tab. 
+
+![image](https://user-images.githubusercontent.com/96586524/154258805-6d763a62-e1bb-4c65-b93b-ba4020ff94de.png)
+
+Define your user, password, DNS servers, and enter your SSH key from your terraform+ansible management host. 
 
 
 
