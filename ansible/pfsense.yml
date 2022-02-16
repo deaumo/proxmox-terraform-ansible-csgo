@@ -1,6 +1,9 @@
 --
 - hosts: pfsense
   become: true
+  
+  vars:
+    - vmip: 10.10.10.10
 
   collections:
     - pfsensible.core
@@ -19,7 +22,7 @@
         interface: wan
         source: any
         destination: any:27015
-        target: 10.0.80.81:27015
+        target: {{ vmip }}:27015
         associated_rule: pass
         state: present
 
@@ -29,7 +32,7 @@
         interface: wan
         source: any
         destination: any:27016
-        target: 10.0.80.81:27016
+        target: {{ vmip }}:27016
         associated_rule: pass
         state: present
 
@@ -39,16 +42,16 @@
         interface: wan
         source: any
         destination: any:27017
-        target: 10.0.80.81:27017
+        target: {{ vmip }}:27017
         associated_rule: pass
         state: present
-
+        
     - name: "Add NAT port forward traffic rule for CSGO_4"
       pfsense_nat_port_forward:
         descr: 'csgo4'
         interface: wan
         source: any
         destination: any:27018
-        target: 10.0.80.81:27018
+        target: {{ vmip }}:27018
         associated_rule: pass
         state: present
