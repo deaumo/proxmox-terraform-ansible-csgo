@@ -1,7 +1,7 @@
 # proxmox-terraform-ansible-csgo
 Deploy CSGO servers on a Proxmox server using Terraform, Ansible and Docker compose.
 
-##### Table of Contents  
+## Table of Contents  
 [Prerequisite](#Prerequisite)  
 [Pre-deployment configuration](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-deployment-configuration)  
 [Set up VM template on Proxmox](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#set-up-vm-template-on-proxmox)  
