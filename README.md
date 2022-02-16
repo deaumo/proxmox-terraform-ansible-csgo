@@ -58,9 +58,9 @@ Modify the vars.tf file according to your needs. The variables are self-explanat
 
 In the ansible/setup.yml playbook file, define the variable username, the same you previously defined in the cloud-init section. 
 
-You should also update the inventory.ini file. If the IP address of the future VM is 10.10.10.10, then your file has to look like this:
+You should also update the inventory.ini file. If the IP address of the future VM is 10.10.10.10, and your username is 'youruser', then your file has to look like this:
 ```
-csgo]
+[csgo]
 #Enter your VM IP here
 10.10.10.10
 [all:vars]
