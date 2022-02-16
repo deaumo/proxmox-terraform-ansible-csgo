@@ -1,0 +1,54 @@
+--
+- hosts: pfsense
+  become: true
+
+  collections:
+    - pfsensible.core
+    
+  tasks:
+
+    - name: "Install needed package on pfSense"
+      package:
+        name:
+          - pfSense-pkg-sudo
+        state: present
+
+    - name: "Add NAT port forward traffic rule for CSGO_1"
+      pfsense_nat_port_forward:
+        descr: 'csgo1'
+        interface: wan
+        source: any
+        destination: any:27015
+        target: 10.0.80.81:27015
+        associated_rule: pass
+        state: present
+
+    - name: "Add NAT port forward traffic rule for CSGO_2"
+      pfsense_nat_port_forward:
+        descr: 'csgo2'
+        interface: wan
+        source: any
+        destination: any:27016
+        target: 10.0.80.81:27016
+        associated_rule: pass
+        state: present
+
+    - name: "Add NAT port forward traffic rule for CSGO_3"
+      pfsense_nat_port_forward:
+        descr: 'csgo3'
+        interface: wan
+        source: any
+        destination: any:27017
+        target: 10.0.80.81:27017
+        associated_rule: pass
+        state: present
+
+    - name: "Add NAT port forward traffic rule for CSGO_4"
+      pfsense_nat_port_forward:
+        descr: 'csgo4'
+        interface: wan
+        source: any
+        destination: any:27018
+        target: 10.0.80.81:27018
+        associated_rule: pass
+        state: present
