@@ -1,0 +1,228 @@
+---
+- hosts: csgo
+  become: true
+  become_user: root
+  vars:
+    - username: youruser
+
+  tasks:
+    - name: Update package repository and cache
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+    - name: Upgrade packages
+      apt: upgrade=dist force_apt_get=yes
+
+    - name: Check for reboot
+      register: reboot_required_file
+      stat: path=/var/run/reboot-required get_md5=no
+
+    - name: Reboot if kernel updated
+      reboot:
+        msg: "Reboot initiated by Ansible for kernel upgrade"
+        connect_timeout: 5
+        reboot_timeout: 300
+        pre_reboot_delay: 0
+        post_reboot_delay: 30
+        test_command: uptime
+      when: reboot_required_file.stat.exists
+
+    - name: Install packages
+      apt:
+        pkg:
+        - docker.io
+        - docker-compose
+
+    - name: Adding user to Docker group  
+      user: name={{ username }}
+        group=docker
+
+    - name: Transfer Docker Compose file
+      copy:
+        src: files/docker-compose.yml
+        dest: /home/{{ username }}/docker-compose.yml
+
+    - name: Transfer Docker .env file
+      copy:
+        src: files/.env
+        dest: /home/{{ username }}/.env
+
+    - name: deploy Docker Compose stack
+      docker_compose:
+        project_src: /home/{{ username }}
+        files:
+        - docker-compose.yml
+
+    - name: Update permissions for CSGO_1 directory
+      file:
+        path: /data/csgo1       
+        owner: root
+        group: root
+        mode: '0777'
+        state: directory
+        recurse: yes
+      tags: 
+        - csgo1
+
+    - name: Update permissions for CSGO_2 directory
+      file:
+        path: /data/csgo2
+        owner: root
+        group: root
+        mode: '0777'
+        state: directory
+        recurse: yes
+      tags:
+        - csgo2
+
+    - name: Update permissions for CSGO_3 directory
+      file:
+        path: /data/csgo3
+        owner: root
+        group: root
+        mode: '0777'
+        state: directory
+        recurse: yes
+      tags:
+        - csgo3
+
+    - name: Update permissions for CSGO_4 directory
+      file:
+        path: /data/csgo4
+        owner: root
+        group: root
+        mode: '0777'
+        state: directory
+        recurse: yes
+      tags:
+        - csgo4
+
+    - name: Creates CSGO_1 directory
+      file:
+        path: /data/csgo1/csgo/cfg
+        state: directory
+        owner: root
+        group: root
+        mode: 0777
+      tags:
+        - csgo1
+
+    - name: Creates CSGO_2 directory
+      file:
+        path: /data/csgo2/csgo/cfg
+        state: directory
+        owner: root    
+        group: root    
+        mode: 0777
+      tags:
+        - csgo2
+
+    - name: Creates CSGO_3 directory
+      file:
+        path: /data/csgo3/csgo/cfg
+        state: directory
+        owner: root
+        group: root
+        mode: 0777
+      tags:
+        - csgo3
+
+    - name: Creates CSGO_4 directory
+      file:
+        path: /data/csgo4/csgo/cfg
+        state: directory
+        owner: root
+        group: root
+        mode: 0777
+      tags: 
+        - csgo4
+
+    - name: Transfer CSGO_1 cfg files
+      copy:
+        src: '{{item}}'
+        dest: '/data/csgo1/csgo/cfg/'
+        owner: root
+        group: root
+        mode: 0777
+      loop:
+        - files/csgo1/server.cfg
+        - files/csgo1/gamemode_casual.cfg
+      tags:
+        - csgo1
+
+     - name: Transfer CSGO_2 cfg files
+      copy:
+        src: '{{item}}'
+        dest: '/data/csgo2/csgo/cfg/'
+        owner: root
+        group: root
+        mode: 0777
+      loop:
+        - files/csgo2/server.cfg
+        - files/csgo2/gamemode_armsrace.cfg
+      tags:
+        - csgo2
+
+    - name: Transfer CSGO_3 cfg files
+      copy:
+        src: '{{item}}'
+        dest: '/data/csgo3/csgo/cfg/'
+        owner: root
+        group: root
+        mode: 0777
+      loop:
+        - files/csgo3/server.cfg
+        - files/csgo3/gamemode_competitive2v2.cfg         
+        - files/csgo3/gamemode_competitive2v2_offline.cfg
+      tags:
+        - csgo3
+
+    - name: Update permissions for CSGO_1 directory
+      file:
+        path: /data/csgo1
+        owner: root
+        group: root
+        mode: '0777'
+        state: directory
+        recurse: yes
+      tags: 
+        - csgo1
+
+    - name: Update permissions for CSGO_2 directory
+      file:
+        path: /data/csgo2      
+        owner: root
+        group: root
+        mode: '0777'
+        state: directory
+        recurse: yes
+      tags:
+        - csgo2
+
+    - name: Update permissions for CSGO_3 directory
+      file:
+        path: /data/csgo3       
+        owner: root
+        group: root
+        mode: '0777'
+        state: directory
+        recurse: yes
+      tags:
+        - csgo3
+
+    - name: Update permissions for CSGO_4 directory
+      file:
+        path: /data/csgo4
+        owner: root
+        group: root
+        mode: '0777'
+        state: directory
+        recurse: yes
+      tags:
+        - csgo4
+
+    - name: Restart services
+      community.docker.docker_compose:
+        project_src: /home/{{ username }}
+        build: no
+        restarted: yes
+      register: output
