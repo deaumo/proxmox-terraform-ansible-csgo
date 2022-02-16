@@ -4,11 +4,17 @@ Deploy CSGO servers on a Proxmox server using Terraform, Ansible and Docker comp
 ##### Table of Contents  
 [Prerequisite](#Prerequisite)  
 [Pre-deployment configuration](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-deployment-configuration)  
-[Set up VM template on Proxmox](#Set up VM template on Proxmox)  
-[Terraform configuration](#Terraform configuration)  
-[Ansible configuration](#Ansible configuration)  
-[CSGO variables ](#CSGO variables)  
-[Deployment](#Deployment)  
+[Set up VM template on Proxmox](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#set-up-vm-template-on-proxmox)  
+[Terraform configuration](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#terraform-configuration)  
+[Ansible configuration](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#ansible-configuration)  
+[CSGO variables ](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#csgo-variables)  
+[Deployment](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#deployment)  
+[VM Provisionning]([Deployment](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#vm-provisionning)  
+[VM Configuration](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#vm-configuration)  
+[Understanding tags](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#understanding-tags)  
+[Pre-configured CSGO Servers](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers)  
+[Usage](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers#usage) 
+[Network](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers#network) 
 
 ## Prerequisite
 
