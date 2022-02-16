@@ -115,7 +115,7 @@ This time you need to locate yourself into the proxmox-terraform-ansible-csgo/an
 
 Let's say you want to deploy server 1 and 2 without server 3 and 4. You would go like this:
 ```
-ansible-playbook setup.yml --skip-tags "csgo3,csgo4"
+ansible-playbook setup.yml -i inventory.ini --skip-tags "csgo3,csgo4"
 ```
 Skipping tags with the option --skip-tags will skip all tasks with the specified tags, in effect not deploying CSGO server 3 and 4.
 
