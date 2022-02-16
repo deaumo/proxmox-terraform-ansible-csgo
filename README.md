@@ -1,5 +1,5 @@
 # proxmox-terraform-ansible-csgo
-Deploy CSGO servers on a Proxmox server with Terraform and Ansible
+Deploy CSGO servers on a Proxmox server using Terraform, Ansible and Docker
 
 ## Prerequisite
 
@@ -14,7 +14,7 @@ In this part we will set up a Ubuntu template on our Proxmox server.
 What you need: 
 - What bridge will the VM be connected to ?
 - What is the IP address of the VM going to be ?
-- How many servers do you want to run ? (needed for compute and disk space dimensionning) 
+- How many CSGO servers do you want to run ? (needed for compute and disk space dimensionning) 
 
 The following commands on display will be adapted to my case. Change accordingly to your needs. My bridge will be vmbr3. I will run 4 CSGO servers on this VM, therefore I need at least 200 GB of disk space. On my server, I set 8vcpu for servers to spin up faster. (vcpus will be set in the terraform part). 4 GB of RAM seems to be enough.
 
@@ -37,6 +37,8 @@ Next go to your template, cloud-init tab.
 
 Define your user, password, DNS servers, and enter your SSH key from your terraform+ansible management host. 
 
+## Terraform configuration
 
+Modify the vars.tf file according to your needs. The variables are self-explanatory and are accompanied by a description to help you figure it out. 
 
 ## CSGO variables 
