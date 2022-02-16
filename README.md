@@ -1,13 +1,13 @@
 # proxmox-terraform-ansible-csgo
-Deploy CSGO servers on a Proxmox server using Terraform, Ansible and Docker
+Deploy CSGO servers on a Proxmox server using Terraform, Ansible and Docker compose.
 
 ## Prerequisite
 
 Have terraform and ansible installed where you want to deploy and manage your infrastructure from. In my case, I went for a Ubuntu LXC instance for easier management. 
 
-## Proxmox configuration
+## Pre-deployment configuration
 
-### Set up VM template
+### Set up VM template on Proxmox
 
 In this part we will set up a Ubuntu template on our Proxmox server.
 
@@ -35,14 +35,22 @@ Next go to your template, cloud-init tab.
 
 ![image](https://user-images.githubusercontent.com/96586524/154258805-6d763a62-e1bb-4c65-b93b-ba4020ff94de.png)
 
-Define your user, password, DNS servers, and enter your SSH key from your terraform+ansible management host. 
+Define your user, password, DNS servers, and enter your SSH key from your terraform+ansible management host. You must then click "regenerate image" to apply changes. 
+
+:information_source: I advise you to chose the same username both on your management host (the one with terraform+ansible installed) and on the target CSGO VM as it is how I configured it to be. 
 
 :warning: Do not forget to resize the template disk accordingly to your needs ! For running 4 servers, I needed 200 GB. To achieve this go to hardware tab of the template, hard disk, resize, and specify an increment (the value will be added to predefined disk space). 
 
-## Terraform configuration
+### Terraform configuration
 
 Modify the vars.tf file according to your needs. The variables are self-explanatory and are accompanied by a description to help you figure it out. 
 
-## CSGO variables 
+### Ansible configuration
+
+In the ansible/setup.yml playbook file, define the variable username, the same you previously defined in the cloud-init section. 
+
+### CSGO variables 
+
+## Deployment 
 
 
