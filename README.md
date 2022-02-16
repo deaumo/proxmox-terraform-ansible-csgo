@@ -13,9 +13,9 @@ Deploy CSGO servers on a Proxmox server using Terraform, Ansible and Docker comp
 [VM Provisionning](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#vm-provisionning)  
 [VM Configuration](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#vm-configuration)  
 [Understanding tags](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#understanding-tags)  
-[Pre-configured CSGO Servers](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers)  
-[Usage](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers#usage) 
-[Network](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers#network)
+[Pre-configured CSGO Servers](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers)       
+[Usage](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers#usage)                
+[Network](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers#network)                    
 [Port forwaring configuration with Ansible for pfSense](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#port-forwaring-configuration-with-ansible-for-pfsense)
 
 
