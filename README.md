@@ -37,8 +37,12 @@ Next go to your template, cloud-init tab.
 
 Define your user, password, DNS servers, and enter your SSH key from your terraform+ansible management host. 
 
+:warning: Do not forget to resize the template disk accordingly to your needs ! For running 4 servers, I needed 200 GB. To achieve this go to hardware tab of the template, hard disk, resize, and specify an increment (the value will be added to predefined disk space). 
+
 ## Terraform configuration
 
 Modify the vars.tf file according to your needs. The variables are self-explanatory and are accompanied by a description to help you figure it out. 
 
 ## CSGO variables 
+
+
