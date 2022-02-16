@@ -16,6 +16,8 @@ Deploy CSGO servers on a Proxmox server using Terraform, Ansible and Docker comp
 [Pre-configured CSGO Servers](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers)  
 [Usage](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers#usage) 
 [Network](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers#network) 
+[Port forwaring configuration with Ansible for pfSense](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#port-forwarding-configuration-with-ansible-for-pfsense)
+
 
 ## What this project does
 
@@ -133,3 +135,21 @@ Here are the configured ports you need to allow passing through NATing :
 | csgo2     | Armsrace       | 27016        | 27021          |
 | csgo3     | Wingman        | 27017        | 27022          |
 | csgo4     | Guardian       | 27018        | 27023          |
+
+## Port forwaring configuration with Ansible for pfSense 
+If like me you have a pfSense router in front of your VM you can use the provided playbook to set up port forwarding all in one command. 
+
+To do this, you need to:
+- fill the pfSense variables in the inventory.ini file.
+- Enable SSH on pfSense
+
+Your python interpreter variable will change according to your pfSense version, see [documentation](https://github.com/opoplawski/ansible-pfsense). 
+
+Then you need to modify the 'vmip' variable in the pfsense.yml playbook to reflect your VM IP. 
+
+Finlly, run the playbook :
+
+```
+ansible-playbook pfsense.yml -i inventory.ini
+```
+
