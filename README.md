@@ -62,4 +62,20 @@ In the ansible/setup.yml playbook file, define the variable username, the same y
 
 ## Deployment 
 
+### Understanding tags
+#### Pre-configured CSGO servers
 
+| Number    | Type of server | Start Map    |
+| --------- | -------------- | ------------ |
+| csgo1     | Hostage        | cs_militia   |
+| csgo2     | Armsrace       | de_bank      |
+| csgo3     | Wingman        | de_lake      |
+| csgo4     | Guardian       | gd_blacksite |
+
+#### usage
+
+Let's say you want to deploy server 1 and 2 without server 3 and 4. You would go like this:
+```
+ansible-playbook setup.yml --skip-tags "csgo3,csgo4"
+```
+Skipping tags will skip all tasks with the specified tasks, in effect not deploying CSGO server 3 and 4.
