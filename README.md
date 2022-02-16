@@ -60,7 +60,22 @@ In the ansible/setup.yml playbook file, define the variable username, the same y
 
 ### CSGO variables 
 
+Define CSGO variables into files/.env file. This include public ip address for the srcds server, steam tokens, tickrate, and start maps. 
+
 ## Deployment 
+
+### VM Provisionning
+
+From proxmox-terraform-ansible-csgo/terraform directory:
+```
+terraform init
+terraform apply
+```
+This will provision the pre-configured VM (according to your personalized variables) on to the proxmox host.
+
+### VM Configuration
+
+This time you need to locate yourself into the proxmox-terraform-ansible-csgo/ansible directory.
 
 ### Understanding tags
 #### Pre-configured CSGO servers
@@ -72,10 +87,25 @@ In the ansible/setup.yml playbook file, define the variable username, the same y
 | csgo3     | Wingman        | de_lake      |
 | csgo4     | Guardian       | gd_blacksite |
 
-#### usage
+#### Usage
 
 Let's say you want to deploy server 1 and 2 without server 3 and 4. You would go like this:
 ```
 ansible-playbook setup.yml --skip-tags "csgo3,csgo4"
 ```
-Skipping tags will skip all tasks with the specified tasks, in effect not deploying CSGO server 3 and 4.
+Skipping tags with the option --skip-tags will skip all tasks with the specified tags, in effect not deploying CSGO server 3 and 4.
+
+After the playbook terminates, you need to wait for download, configuration and potentially updates to end. You can monitor the bandwith, cpu usage as well as the docker logs for indication: 
+```
+docker logs csgo1 --follow
+```
+### Network
+You should, of course, open ports on your router, provided there is one in front of your VM. 
+Here are the configured ports you need to allow passing through NATing : 
+
+| Number    | Type of server | SRCDS Ports  | SRCDS TV Ports |
+| --------- | -------------- | ------------ | -------------- |
+| csgo1     | Hostage        | 27015        | 27020          |
+| csgo2     | Armsrace       | 27016        | 27021          |
+| csgo3     | Wingman        | 27017        | 27022          |
+| csgo4     | Guardian       | 27018        | 27023          |
