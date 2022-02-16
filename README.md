@@ -2,6 +2,7 @@
 Deploy CSGO servers on a Proxmox server using Terraform, Ansible and Docker compose.
 
 ## Table of Contents  
+[What this project does](#what-this-project-does)  
 [Prerequisite](#Prerequisite)  
 [Pre-deployment configuration](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-deployment-configuration)  
 [Set up VM template on Proxmox](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#set-up-vm-template-on-proxmox)  
@@ -15,6 +16,13 @@ Deploy CSGO servers on a Proxmox server using Terraform, Ansible and Docker comp
 [Pre-configured CSGO Servers](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers)  
 [Usage](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers#usage) 
 [Network](https://github.com/deaumo/proxmox-terraform-ansible-csgo/blob/main/README.md#pre-configured-csgo-servers#network) 
+
+## What this project does
+
+This project does the following:
+
+- Provisions a Ubuntu server VM on a Proxmox virtualization host using Terraform
+- Configures the VM with Ansible to run CSGO SRCDS server using Docker cm2network/csgo image, docker-compose commands, preconfigured configuration files and custom environement variables.
 
 ## Prerequisite
 
