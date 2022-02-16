@@ -58,6 +58,16 @@ Modify the vars.tf file according to your needs. The variables are self-explanat
 
 In the ansible/setup.yml playbook file, define the variable username, the same you previously defined in the cloud-init section. 
 
+You should also update the inventory.ini file. If the IP address of the future VM is 10.10.10.10, then your file has to look like this:
+```
+csgo]
+#Enter your VM IP here
+10.10.10.10
+[all:vars]
+ansible_connection=ssh
+ansible_user=youruser
+```
+
 ### CSGO variables 
 
 Define CSGO variables into files/.env file. This include public ip address for the srcds server, steam tokens, tickrate, and start maps. 
