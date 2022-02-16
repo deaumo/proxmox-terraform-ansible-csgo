@@ -136,11 +136,11 @@ Here are the configured ports you need to allow passing through NATing :
 | csgo3     | Wingman        | 27017        | 27022          |
 | csgo4     | Guardian       | 27018        | 27023          |
 
-## Port forwaring configuration with Ansible for pfSense 
+#### Port forwaring configuration with Ansible for pfSense 
 If like me you have a pfSense router in front of your VM you can use the provided playbook to set up port forwarding all in one command. 
 
 To do this, you need to:
-- fill the pfSense variables in the inventory.ini file.
+- Specify the pfSense variables in the inventory.ini file.
 - Enable SSH on pfSense
 
 Your python interpreter variable will change according to your pfSense version, see [documentation](https://github.com/opoplawski/ansible-pfsense). 
